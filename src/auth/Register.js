@@ -1,58 +1,70 @@
-import {useState} from "react";
-import {loginUser} from "./loginApi";
-import {Session} from "../model/common";
-import {CustomError} from "../model/CustomError";
-import Navbar from "../pages/navbar";
+import React, { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../pages/navbar";
+import { useDispatch , useSelector} from "react-redux";
+import { registerUser } from "../redux/authSlice";
 
-export function Login() {
 
-    const [error, setError] = useState({} as CustomError);
-    const [session, setSession] = useState({} as Session);
-    const navigate = useNavigate();
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const data = new FormData(form);
-        loginUser({user_id: -1, username:  data.get('login') as string, password: data.get('password') as string},
-            (result: Session) => {
-                console.log(result);
-                setSession(result);
-                form.reset();
-                setError(new CustomError(""));
-                navigate("/messages");
-            }, (loginError: CustomError) => {
-                console.log(loginError);
-                setError(loginError);
-                setSession({} as Session);
-            });
-    };
-    
+export function Register() {
+ const navigate = useNavigate();
+ const { user, loading, error } = useSelector((state) => state.user);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    return(<>
+  const dispatch = useDispatch();
+  const registerHandle = (e) => {
+    e.preventDefault() ;
+    console.log({username,email,password});
+    dispatch(registerUser({username,email,password}))
+  }
+  useEffect(() => {
+    if (user) {
+       
+        navigate('/messages');
+    }
+}, [user, navigate]);
+
+  return (<>
         <div className="min-h-screen bg-white">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div>
                   <Navbar/>
                 </div>
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-              <form onSubmit={handleSubmit}  className="space-y-6">
+              <form  onSubmit={registerHandle}  className="space-y-6">
                 <div>
-                  <label htmlFor="login" className="block text-sm/6 font-medium text-gray-900">
+                  <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
                     Idnetifiant
                   </label>
                   <div className="mt-2">
                     <input
-                      id="login"
-                      name="login"
+                      id="username"
+                      
                       type="text"
                       required
-                    
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                     />
                   </div>
                 </div>
-    
+                <div>
+                  <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                    Email
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      id="email"
+                      
+                      type="text"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
                 <div>
                   <div className="flex items-center justify-between">
                     <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
@@ -63,10 +75,12 @@ export function Login() {
                   <div className="mt-2">
                     <input
                       id="password"
-                      name="password"
+                      
                       type="password"
                       required
                       autoComplete="current-password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                     />
                   </div>
@@ -79,6 +93,8 @@ export function Login() {
                   >
                     CONNEXION
                   </button>
+                  {loading && <p>Chargement...</p>}
+                  {error && <p>Erreur : {error}</p>}
                 </div>
               </form>
     
@@ -86,12 +102,8 @@ export function Login() {
             </div>
                 </div>
          </div> 
-         { session.token &&
-                    <span>{session.username} : {session.token}</span>
-                }
-                { error.message &&
-                    <span>{error.message}</span>
-                }      
         </>
-        );
+  );
 }
+
+export default Register

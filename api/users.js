@@ -10,7 +10,10 @@ export default async function handler(request) {
 
         const connected = await checkSession(request);
         if (!connected) {
+            console.log("request",request.headers);
             console.log("Not connected");
+            console.log("Authorization Header:", request.headers.get("Authorization"));
+
             return unauthorizedResponse();
         }
 
