@@ -1,8 +1,8 @@
 import React, { useState , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../pages/navbar";
+import Navbar from "../pages/navbar.jsx";
 import { useDispatch , useSelector} from "react-redux";
-import { registerUser } from "../redux/authSlice";
+import { registerUser } from "../redux/authSlice.js";
 
 
 export function Register() {

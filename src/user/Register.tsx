@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "./RegisterApi";
-import Navbar from "../pages/navbar";
+import { registerUser } from "./RegisterApi.js";
+import Navbar from "../pages/navbar.jsx";
 import { CustomError } from "../model/CustomError"; // Assurez-vous que le chemin est correct
 
 export function Register() {

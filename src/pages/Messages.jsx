@@ -90,7 +90,7 @@ const Messages = () => {
 export default Messages;*/
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMessages, addMessage } from '../redux/conversationSlice';
+import { fetchMessages, addMessage } from '../redux/conversationSlice.js';
 
 const Messages = () => {
     const dispatch = useDispatch();

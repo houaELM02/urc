@@ -2,7 +2,7 @@ import {useState} from "react";
 import {loginUser} from "./loginApi";
 import {Session} from "../model/common";
 import {CustomError} from "../model/CustomError";
-import Navbar from "../pages/navbar";
+import Navbar from "../pages/navbar.jsx";
 import { useNavigate } from "react-router-dom";
 
 export function Login() {

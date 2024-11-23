@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AddMessage from './AddMessage';
-import { fetchMessages, addMessage, clearMessages } from '../redux/messageSlice';
+import AddMessage from './AddMessage.js';
+import { fetchMessages, addMessage, clearMessages } from '../redux/messageSlice.js';
 
 
 

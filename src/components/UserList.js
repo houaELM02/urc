@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsers, selectUser } from '../redux/usersSlice';
+import { fetchUsers, selectUser } from '../redux/usersSlice.js';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { selectConversation } from '../redux/conversationSlice';
+import { selectConversation } from '../redux/conversationSlice.js';
 
 
 

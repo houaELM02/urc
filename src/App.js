@@ -1,10 +1,10 @@
 import './App.css';
-import {Login} from "./user/Login";
+import {Login} from "./user/Login.tsx";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Acceuil from './pages/Acceuil';
-import Register from './auth/Register';
+import Acceuil from './pages/Acceuil.jsx';
+import Register from './auth/Register.js';
 import React, { useEffect } from 'react';
-import Notifications from "../src/components/pusher";
+import Notifications from "../src/components/pusher.js";
 
 function App() {
 

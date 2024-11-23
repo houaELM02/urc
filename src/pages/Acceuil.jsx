@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from "./navbar";
-import UserList from "../components/UserList";
-import UserMessage from '../components/UserMessage';
+import Navbar from "./navbar.jsx";
+import UserList from "../components/UserList.js";
+import UserMessage from '../components/UserMessage.js';
 import { useSelector } from 'react-redux';
 
 export  function Acceuil(){
