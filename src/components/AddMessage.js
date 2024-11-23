@@ -6,7 +6,7 @@ const AddMessage = ({ receiverId, messageContent, onSuccess, onError }) => {
    
     const handleSendMessage = async () => {
         try {
-            const token = sessionStorage.getItem('token'); // Supposons que le token est stocké dans sessionStorage
+            const token = sessionStorage.getItem('token'); 
             const response = await fetch('/api/message', {
                 method: 'POST',
                 headers: {
