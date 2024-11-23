@@ -6,7 +6,7 @@ import PushNotifications from "@pusher/push-notifications-server";
 
 const redis = Redis.fromEnv();
 
-export default async (request, response) => {
+export default async function (request, response) {
     try {
 
         const headers = new Headers(request.headers);
