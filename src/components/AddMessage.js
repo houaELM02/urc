@@ -30,7 +30,8 @@ const AddMessage = ({ receiverId, messageContent, onSuccess, onError }) => {
             //onSuccess(result);
             if (onSuccess) onSuccess({msg : messageContent, date : result.date});
         } catch (err) {
-            if (onError) onError(result);
+           
+            if (onError) onError(err);
         }
     };
 
