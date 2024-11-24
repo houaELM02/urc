@@ -27,11 +27,30 @@ export function Register() {
 
   return (<>
         <div className="min-h-screen bg-white">
-                <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-                <div>
+        <div>
                   <Navbar/>
                 </div>
+                <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+                
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div className="flex justify-center">
+            
+            <img
+                src="/ubo.png"
+                alt="Logo UBO"
+                className="w-max h-max" 
+            />
+        </div>
+        {loading && (
+    <p className="text-center text-blue-500 font-semibold">
+        Chargement...
+    </p>
+)}
+{error && (
+    <p className="text-center text-red-500 font-semibold bg-red-100 p-2 rounded">
+        Erreur : {error}
+    </p>
+)}
               <form  onSubmit={registerHandle}  className="space-y-6">
                 <div>
                   <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
@@ -91,10 +110,10 @@ export function Register() {
                     type="submit"
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    CONNEXION
+                    Inscrire
                   </button>
-                  {loading && <p>Chargement...</p>}
-                  {error && <p>Erreur : {error}</p>}
+                 
+
                 </div>
               </form>
     

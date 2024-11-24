@@ -18,16 +18,37 @@ export default function Navbar(){
     };
 
     return(
-        <nav>
+        <nav className="flex justify-between items-center w-full bg-indigo-600 px-4 py-2 shadow-md">
            
+           <div className="flex-1 text-center">
+                <h1 className="text-white font-bold text-lg">Chat Application</h1>
+            </div>
               
-           <button onClick={() => navigate('/register')}>INSCRIRE</button>
-              {isAuthenticated ? (
-                <button onClick={handleLogout}>DECONNEXION</button>
-            ) : (
-                <button onClick={() => navigate('/')}>CONNEXION</button>
-            )}
-            
+            <div className="flex space-x-4">
+                {!isAuthenticated && (
+                    <button
+                        onClick={() => navigate('/register')}
+                        className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        INSCRIRE
+                    </button>
+                )}
+                {isAuthenticated ? (
+                    <button
+                        onClick={handleLogout}
+                        className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        DECONNEXION
+                    </button>
+                ) : (
+                    <button
+                        onClick={() => navigate('/')}
+                        className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        CONNEXION
+                    </button>
+                )}
+            </div>
         </nav>
     )
 }

@@ -37,12 +37,13 @@ function App() {
     <Notifications>
     <Router>
     
-    <main className='container content'>
+    <main >
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register/>} />
         <Route path='/messages' element={<Acceuil/>} />
         <Route path='/messages/user/:user_id' element={<Acceuil/>} />
+        <Route path='/messages/room/:room_id' element={<Acceuil/>} />
         </Routes>
     </main>
   </Router>

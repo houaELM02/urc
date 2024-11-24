@@ -39,7 +39,7 @@ export function UserMessage(){
 
 
     const handleSendMessageError = (error) => {
-        setStatus({ type: 'error', message: error });
+        setStatus({ type: 'error', message: "Le message ne peut pas être vide."  });
         setTimeout(() => {
             setStatus(null);
         }, 3000);
@@ -49,7 +49,8 @@ export function UserMessage(){
         if (selectedConversation) {
             dispatch(fetchMessages({ receiver_id: selectedConversation.user_id }));
         } else {
-            dispatch(clearMessages()); // Action pour réinitialiser les messages
+            dispatch(clearMessages());
+            
         }
     }, [dispatch, selectedConversation]);
 

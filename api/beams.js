@@ -16,8 +16,8 @@ export default async (req, res) => {
     }   
     console.log("notificationnn")
 
-    console.log("IncenceId "+process.env.PUSHER_INSTANCE_ID);
-    console.log("secretKey " + process.env.PUSHER_SECRET_KEY);
+    //console.log("IncenceId "+process.env.PUSHER_INSTANCE_ID);
+    //console.log("secretKey " + process.env.PUSHER_SECRET_KEY);
 
 
     //const instanceId = process.env.PUSHER_INSTANCE_ID;

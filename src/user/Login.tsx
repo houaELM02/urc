@@ -30,12 +30,36 @@ export function Login() {
     
 
     return(<>
+
         <div className="min-h-screen bg-white">
-                <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div>
                   <Navbar/>
                 </div>
+          <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+          <div className="flex justify-center">
+            
+            <img
+                src="/ubo.png"
+                alt="Logo UBO"
+                className="w-max h-max" 
+            />
+        </div>
+               
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            {session.token && (
+                    <div className="p-4 bg-green-100 text-green-700 rounded-md shadow-md mb-4">
+                        <span className="font-semibold">Connecté en tant que : </span>
+                        <span>{session.username}</span>
+                        <span className="ml-2 font-mono text-xs text-gray-500">Token: {session.token}</span>
+                    </div>
+                )}
+
+                {error.message && (
+                    <div className="p-4 bg-red-100 text-red-700 rounded-md shadow-md mb-4">
+                        <span className="font-semibold">Erreur : </span>
+                        <span>{error.message}</span>
+                    </div>
+                )}
               <form onSubmit={handleSubmit}  className="space-y-6">
                 <div>
                   <label htmlFor="login" className="block text-sm/6 font-medium text-gray-900">
@@ -85,13 +109,7 @@ export function Login() {
              
             </div>
                 </div>
-         </div> 
-         { session.token &&
-                    <span>{session.username} : {session.token}</span>
-                }
-                { error.message &&
-                    <span>{error.message}</span>
-                }      
+         </div>   
         </>
         );
 }
