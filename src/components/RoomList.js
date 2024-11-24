@@ -4,7 +4,7 @@ import { fetchRooms, selectRoom } from "../redux/roomsSlice.js";
 import { useNavigate, useLocation } from "react-router-dom";
 import {selectRoomConversation} from "../redux/convRoomSlice.js";
 
-export function RoomList() {
+export function RoomList({ onRoomSelect }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -23,7 +23,7 @@ export function RoomList() {
     }, [dispatch]);
 
     const handleRoomClick = (room) => {
-
+        onRoomSelect();
         console.log("roooooooooom",room);
         dispatch(selectRoom(room));
         dispatch(selectRoomConversation(room));

@@ -4,6 +4,7 @@ import SendMessage from "./sendMessage.js";
 import { fetchRoomMessages, addRoomMessage, clearRoomMessages } from "../redux/roomMessageSlice.js";
 
 
+
 export function RoomMessage() {
     const dispatch = useDispatch();
     const [messageContent, setMessageContent] = useState('');
@@ -51,7 +52,9 @@ export function RoomMessage() {
             
             console.log("Fetching room messages for:", selectedRoom.room_id);
             dispatch(fetchRoomMessages({ room_id: selectedRoom.room_id }));
+            
         }else {
+            
             dispatch(clearRoomMessages());
         }
 
