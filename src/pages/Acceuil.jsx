@@ -3,7 +3,7 @@ import Navbar from "./navbar.jsx";
 import UserList from "../components/UserList.js";
 import RoomList from "../components/RoomList.js";
 import UserMessage from "../components/UserMessage.js";
-import RoomMessage from "../components/RoomMessages.js";
+import RoomMessage from "../components/RoomMessage.js";
 import { useSelector } from "react-redux";
 
 export function Acceuil() {

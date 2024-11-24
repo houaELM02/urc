@@ -43,6 +43,10 @@ const conversationSlice = createSlice({
                 messages: [], // Initialise les messages à une liste vide
             };
         },
+        clearConversation: (state) => {
+            state.selectedConversation = null;
+            
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -66,5 +70,5 @@ const conversationSlice = createSlice({
 });
 
 
-export const { selectConversation } = conversationSlice.actions;
+export const { selectConversation ,clearConversation} = conversationSlice.actions;
 export default conversationSlice.reducer;
